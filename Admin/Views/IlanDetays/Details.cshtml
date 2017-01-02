@@ -1,0 +1,74 @@
+﻿@model Data.IlanDetay
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>IlanDetay</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OdaSayi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OdaSayi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BanyoSayi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BanyoSayi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Isitma)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Isitma)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Esyalimi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Esyalimi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aciklama)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adres)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

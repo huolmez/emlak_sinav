@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "Admin Paneli";
+}
+<link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+<link href="~/Content/font-awesome.css" rel="stylesheet" />
+<div class="row">
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="row margin">
+            <div class="col-sm-3">
+                <a class="btn btn-block btn-default" href="@Url.Action("Index","Ilans")">
+                    <i class="fa fa-list-alt fa-3x"></i><br> <small>İlanlar</small>
+                </a>
+            </div>
+
+            <div class="col-sm-3">
+                <a class="btn btn-block btn-default" href="@Url.Action("Index","IlanDetays")">
+                    <i class="fa fa-indent fa-3x"></i><br> <small>İlan Detayları</small>
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a class="btn btn-block btn-default" href="@Url.Action("Index","Kategoris")">
+                    <i class="fa fa-sliders fa-3x"></i><br> <small>Kategoriler</small>
+                </a>
+            </div>
+
+            <div class="col-sm-3">
+                <a class="btn btn-block btn-default" href="@Url.Action("Index", "ProjectAccesses")">
+                    <i class="fa fa-list fa-3x"></i><br> <small>Proje Erişimleri</small>
+                </a>
+            </div>
+        </div>
+        <br />
+        <div class="row margin">
+            <div class="col-sm-3">
+                <a class="btn btn-block btn-default" href="@Url.Action("Index","Projects")">
+                    <i class="fa fa-database fa-3x"></i><br> <small>Projeler</small>
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <a class="btn btn-block btn-default" href="@Url.Action("Index","Payments")">
+                    <i class="fa fa-credit-card fa-3x"></i><br> <small>Ödemeler</small>
+                </a>
+            </div>
+
+
+            <div class="col-sm-3">
+                <a class="btn btn-block btn-default" href="@Url.Action("Index","Users")">
+                    <i class="fa fa-user-circle fa-3x"></i><br> <small>Kullanıcılar</small>
+                </a>
+            </div>
+
+            <div class="col-sm-3">
+                <a class="btn btn-block btn-default" href="@Url.Action("Index","UserTypes")">
+                    <i class="fa fa-users fa-3x"></i><br> <small>Kullanıcı Tipleri</small>
+                </a>
+            </div>
+        </div>
+        <br />
+        <div class="row margin">
+            <div class="col-sm-3">
+                <a class="btn btn-block btn-default" href="@Url.Action("Index","Comments")">
+                    <i class="fa fa-weixin fa-3x"></i><br> <small>Yorumlar</small>
+                </a>
+            </div>
+
+            <div class="col-sm-3">
+                <a class="btn btn-block btn-default" href="@Url.Action("Index","Sikayets")">
+                    <i class="fa fa-warning fa-3x"></i><br> <small>Şikayetler</small>
+                </a>
+            </div>
+
+            <div class="col-sm-3">
+                <a class="btn btn-block btn-default" href="@Url.Action("Index","Logs")">
+                    <i class="fa fa-area-chart fa-3x"></i><br> <small>İşlem Kayıtları</small>
+                </a>
+            </div>
+        </div>
+    </div>
+       </div>
+        
+    
+

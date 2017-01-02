@@ -1,0 +1,54 @@
+﻿@model IQueryable<Data.Ilan>
+           
+
+@{
+    ViewBag.Title = "Anasayfa";
+}
+
+
+@foreach (var ilandetay  in Model)
+{
+    
+    <div class="row text-center">
+       
+            <p class="text-uppercase"> <h1>@ilandetay.Title</h1></p>
+       <hr />
+        <div>
+            <div style="text-align:center">
+                <img src="@Url.Action("Resim",new{@id = ilandetay.Id})" width="600" height="400" />
+            </div>
+            <hr />
+            
+                @*<p class="text-center"> @Html.Raw(ilandetay.IlanDetay.Aciklama)</p>*@
+
+                <p class="text-center"> @Html.Raw(ilandetay.MetreKare)<b>m2</b></p>
+                @*<br />*@
+                <p class="text-center"><b>Fiyat: </b>@Html.Raw(ilandetay.Fiyat)<b>TL</b></p>
+                @*<br />*@
+                <p class="text-center"><b>Kategori:  </b>@Html.Raw(ilandetay.Kategori.KategoriAdi)</p>
+                @*<br />*@
+                <p class="text-center"> <b>Ekleyen Kullanıcı: </b>@Html.Raw(ilandetay.User.Name)</p>
+                <br />
+            
+        </div>
+
+        <div class="well posts-detail alert-danger">
+           @Html.ActionLink("Daha fazlasını gör","Show", "Ilanlar", new { id = ilandetay.Id }, null) |
+            @Html.ActionLink(ilandetay.Kategori.KategoriAdi, "Index", "Ilanlar", new { id = ilandetay.Kategori.Id }, null) |
+            <b>@ilandetay.Comment.Count</b> Yorum |
+            <b>Eklenme Tarihi: </b><span class="glyphicon glyphicon-time"></span> @ilandetay.Tarih.ToString()
+           @*<img class="img-thumbnail pull-right" src="@Url.Action("Avatar", "User", new { id = Model.Id })" />*@ 
+            
+        </div>
+    </div>
+}
+<hr />
+<div class="row pull-right">
+    @Html.ActionLink("Sonraki sayfa", "Index",
+    new { start = ViewBag.start, pageSize = ViewBag.pageSize })
+</div>
+
+<hr />
+
+<script language="javascript" src="http://is.sitekodlari.com/yukaricik1.js"></script>
+

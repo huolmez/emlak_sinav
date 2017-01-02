@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="56029c1f3a244c36bd14290547ce6c6b" Name="Diagram1" DisplayType="true" ZoomLevel="86" >
+        <EntityTypeShape EntityType="emlakmvc.User" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="emlakmvc.UserType" Width="1.5" PointX="2.25" PointY="1.875" />
+        <EntityTypeShape EntityType="emlakmvc.Ilan" Width="1.5" PointX="4" PointY="2.25" />
+        <EntityTypeShape EntityType="emlakmvc.IlanDetay" Width="1.5" PointX="0.5" PointY="4.625" />
+        <EntityTypeShape EntityType="emlakmvc.Log" Width="1.5" PointX="5.875" PointY="0.5" />
+        <EntityTypeShape EntityType="emlakmvc.Kategori" Width="1.5" PointX="5.875" PointY="2.875" />
+        <EntityTypeShape EntityType="emlakmvc.Sikayet" Width="1.5" PointX="2.375" PointY="4" />
+        <EntityTypeShape EntityType="emlakmvc.Comment" Width="1.5" PointX="7.75" PointY="0.5" />
+        <AssociationConnector Association="emlakmvc.UserTypeUser" />
+        <AssociationConnector Association="emlakmvc.KategoriIlan" />
+        <AssociationConnector Association="emlakmvc.UserSikayet" />
+        <AssociationConnector Association="emlakmvc.IlanDetayIlan" />
+        <AssociationConnector Association="emlakmvc.UserIlan" />
+        <AssociationConnector Association="emlakmvc.UserComment" />
+        <AssociationConnector Association="emlakmvc.IlanComment" />
+        <AssociationConnector Association="emlakmvc.UserLog" />
+        <EntityTypeShape EntityType="emlakmvc.Cart" Width="1.5" PointX="9.5" PointY="3.25" />
+        <EntityTypeShape EntityType="emlakmvc.Payment" Width="1.5" PointX="11.25" PointY="0.5" />
+        <EntityTypeShape EntityType="emlakmvc.ProjectAccess" Width="1.5" PointX="9.5" PointY="0.625" />
+        <EntityTypeShape EntityType="emlakmvc.Project" Width="1.5" PointX="7.625" PointY="3.125" />
+        <AssociationConnector Association="emlakmvc.UserProject" />
+        <AssociationConnector Association="emlakmvc.UserProjectAccess" />
+        <AssociationConnector Association="emlakmvc.ProjectProjectAccess" />
+        <AssociationConnector Association="emlakmvc.UserCart" />
+        <AssociationConnector Association="emlakmvc.ProjectCart" />
+        <AssociationConnector Association="emlakmvc.UserPayment" />
+        <AssociationConnector Association="emlakmvc.ProjectAccessPayment" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

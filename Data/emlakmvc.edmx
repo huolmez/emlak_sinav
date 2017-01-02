@@ -1,0 +1,968 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="emlakmvc.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="emlakmvcStoreContainer">
+    <EntitySet Name="UserSet" EntityType="emlakmvc.Store.UserSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UserTypeSet" EntityType="emlakmvc.Store.UserTypeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="IlanSet" EntityType="emlakmvc.Store.IlanSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="IlanDetaySet" EntityType="emlakmvc.Store.IlanDetaySet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LogSet" EntityType="emlakmvc.Store.LogSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KategoriSet" EntityType="emlakmvc.Store.KategoriSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SikayetSet" EntityType="emlakmvc.Store.SikayetSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CommentSet" EntityType="emlakmvc.Store.CommentSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CartSet" EntityType="emlakmvc.Store.CartSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PaymentSet" EntityType="emlakmvc.Store.PaymentSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProjectAccessSet" EntityType="emlakmvc.Store.ProjectAccessSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProjectSet" EntityType="emlakmvc.Store.ProjectSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UserTypeUser" Association="emlakmvc.Store.UserTypeUser">
+      <End Role="UserType" EntitySet="UserTypeSet" />
+      <End Role="User" EntitySet="UserSet" />
+    </AssociationSet>
+    <AssociationSet Name="KategoriIlan" Association="emlakmvc.Store.KategoriIlan">
+      <End Role="Kategori" EntitySet="KategoriSet" />
+      <End Role="Ilan" EntitySet="IlanSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserSikayet" Association="emlakmvc.Store.UserSikayet">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Sikayet" EntitySet="SikayetSet" />
+    </AssociationSet>
+    <AssociationSet Name="IlanDetayIlan" Association="emlakmvc.Store.IlanDetayIlan">
+      <End Role="IlanDetay" EntitySet="IlanDetaySet" />
+      <End Role="Ilan" EntitySet="IlanSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserIlan" Association="emlakmvc.Store.UserIlan">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Ilan" EntitySet="IlanSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserComment" Association="emlakmvc.Store.UserComment">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Comment" EntitySet="CommentSet" />
+    </AssociationSet>
+    <AssociationSet Name="IlanComment" Association="emlakmvc.Store.IlanComment">
+      <End Role="Ilan" EntitySet="IlanSet" />
+      <End Role="Comment" EntitySet="CommentSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserLog" Association="emlakmvc.Store.UserLog">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Log" EntitySet="LogSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserProject" Association="emlakmvc.Store.UserProject">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Project" EntitySet="ProjectSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserProjectAccess" Association="emlakmvc.Store.UserProjectAccess">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="ProjectAccess" EntitySet="ProjectAccessSet" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectProjectAccess" Association="emlakmvc.Store.ProjectProjectAccess">
+      <End Role="Project" EntitySet="ProjectSet" />
+      <End Role="ProjectAccess" EntitySet="ProjectAccessSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserCart" Association="emlakmvc.Store.UserCart">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Cart" EntitySet="CartSet" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectCart" Association="emlakmvc.Store.ProjectCart">
+      <End Role="Project" EntitySet="ProjectSet" />
+      <End Role="Cart" EntitySet="CartSet" />
+    </AssociationSet>
+    <AssociationSet Name="UserPayment" Association="emlakmvc.Store.UserPayment">
+      <End Role="User" EntitySet="UserSet" />
+      <End Role="Payment" EntitySet="PaymentSet" />
+    </AssociationSet>
+    <AssociationSet Name="ProjectAccessPayment" Association="emlakmvc.Store.ProjectAccessPayment">
+      <End Role="ProjectAccess" EntitySet="ProjectAccessSet" />
+      <End Role="Payment" EntitySet="PaymentSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="UserSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserTypeId" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Mail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Telefon" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Avatar" Type="varbinary(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="UserTypeSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IlanSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Fiyat" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MetreKare" Type="int" Nullable="false" />
+    <Property Name="Tarih" Type="datetime" Nullable="false" />
+    <Property Name="Resim" Type="varbinary(max)" Nullable="true" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="KategoriId" Type="int" Nullable="false" />
+    <Property Name="IlanDetayId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IlanDetaySet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Kat" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OdaSayi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="BanyoSayi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Isitma" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Esyalimi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Aciklama" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Adres" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LogSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Detail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KategoriSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KategoriAdi" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SikayetSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Subject" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Aciklama" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CommentSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="IlanId" Type="int" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="Verified" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CartSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Status" Type="int" Nullable="false" />
+    <Property Name="Count" Type="int" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Date" Type="datetime" Nullable="false" />
+    <Property Name="ProjectAccess_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectAccessSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProjectId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProjectSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="File" Type="varbinary(max)" Nullable="true" />
+    <Property Name="FileName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ContentType" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Price" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+  </EntityType>
+  <Association Name="UserTypeUser">
+    <End Role="UserType" Type="emlakmvc.Store.UserTypeSet" Multiplicity="1" />
+    <End Role="User" Type="emlakmvc.Store.UserSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="UserTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KategoriIlan">
+    <End Role="Kategori" Type="emlakmvc.Store.KategoriSet" Multiplicity="1" />
+    <End Role="Ilan" Type="emlakmvc.Store.IlanSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kategori">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ilan">
+        <PropertyRef Name="KategoriId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserSikayet">
+    <End Role="User" Type="emlakmvc.Store.UserSet" Multiplicity="1" />
+    <End Role="Sikayet" Type="emlakmvc.Store.SikayetSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Sikayet">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IlanDetayIlan">
+    <End Role="IlanDetay" Type="emlakmvc.Store.IlanDetaySet" Multiplicity="1" />
+    <End Role="Ilan" Type="emlakmvc.Store.IlanSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="IlanDetay">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ilan">
+        <PropertyRef Name="IlanDetayId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserIlan">
+    <End Role="User" Type="emlakmvc.Store.UserSet" Multiplicity="1" />
+    <End Role="Ilan" Type="emlakmvc.Store.IlanSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ilan">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserComment">
+    <End Role="User" Type="emlakmvc.Store.UserSet" Multiplicity="1" />
+    <End Role="Comment" Type="emlakmvc.Store.CommentSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IlanComment">
+    <End Role="Ilan" Type="emlakmvc.Store.IlanSet" Multiplicity="1" />
+    <End Role="Comment" Type="emlakmvc.Store.CommentSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ilan">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="IlanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserLog">
+    <End Role="User" Type="emlakmvc.Store.UserSet" Multiplicity="1" />
+    <End Role="Log" Type="emlakmvc.Store.LogSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Log">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserProject">
+    <End Role="User" Type="emlakmvc.Store.UserSet" Multiplicity="1" />
+    <End Role="Project" Type="emlakmvc.Store.ProjectSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserProjectAccess">
+    <End Role="User" Type="emlakmvc.Store.UserSet" Multiplicity="1" />
+    <End Role="ProjectAccess" Type="emlakmvc.Store.ProjectAccessSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectAccess">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectProjectAccess">
+    <End Role="Project" Type="emlakmvc.Store.ProjectSet" Multiplicity="1" />
+    <End Role="ProjectAccess" Type="emlakmvc.Store.ProjectAccessSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProjectAccess">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserCart">
+    <End Role="User" Type="emlakmvc.Store.UserSet" Multiplicity="1" />
+    <End Role="Cart" Type="emlakmvc.Store.CartSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectCart">
+    <End Role="Project" Type="emlakmvc.Store.ProjectSet" Multiplicity="1" />
+    <End Role="Cart" Type="emlakmvc.Store.CartSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserPayment">
+    <End Role="User" Type="emlakmvc.Store.UserSet" Multiplicity="1" />
+    <End Role="Payment" Type="emlakmvc.Store.PaymentSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProjectAccessPayment">
+    <End Role="ProjectAccess" Type="emlakmvc.Store.ProjectAccessSet" Multiplicity="1" />
+    <End Role="Payment" Type="emlakmvc.Store.PaymentSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProjectAccess">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Payment">
+        <PropertyRef Name="ProjectAccess_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="emlakmvc" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="emlakmvcContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserSet" EntityType="emlakmvc.User" />
+          <EntitySet Name="UserTypeSet" EntityType="emlakmvc.UserType" />
+          <EntitySet Name="IlanSet" EntityType="emlakmvc.Ilan" />
+          <EntitySet Name="IlanDetaySet" EntityType="emlakmvc.IlanDetay" />
+          <EntitySet Name="LogSet" EntityType="emlakmvc.Log" />
+          <EntitySet Name="KategoriSet" EntityType="emlakmvc.Kategori" />
+          <EntitySet Name="SikayetSet" EntityType="emlakmvc.Sikayet" />
+          <EntitySet Name="CommentSet" EntityType="emlakmvc.Comment" />
+          <AssociationSet Name="UserTypeUser" Association="emlakmvc.UserTypeUser">
+            <End Role="UserType" EntitySet="UserTypeSet" />
+            <End Role="User" EntitySet="UserSet" />
+          </AssociationSet>
+          <AssociationSet Name="KategoriIlan" Association="emlakmvc.KategoriIlan">
+            <End Role="Kategori" EntitySet="KategoriSet" />
+            <End Role="Ilan" EntitySet="IlanSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserSikayet" Association="emlakmvc.UserSikayet">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Sikayet" EntitySet="SikayetSet" />
+          </AssociationSet>
+          <AssociationSet Name="IlanDetayIlan" Association="emlakmvc.IlanDetayIlan">
+            <End Role="IlanDetay" EntitySet="IlanDetaySet" />
+            <End Role="Ilan" EntitySet="IlanSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserIlan" Association="emlakmvc.UserIlan">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Ilan" EntitySet="IlanSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserComment" Association="emlakmvc.UserComment">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Comment" EntitySet="CommentSet" />
+          </AssociationSet>
+          <AssociationSet Name="IlanComment" Association="emlakmvc.IlanComment">
+            <End Role="Ilan" EntitySet="IlanSet" />
+            <End Role="Comment" EntitySet="CommentSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserLog" Association="emlakmvc.UserLog">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Log" EntitySet="LogSet" />
+          </AssociationSet>
+          <EntitySet Name="CartSet" EntityType="emlakmvc.Cart" />
+          <EntitySet Name="PaymentSet" EntityType="emlakmvc.Payment" />
+          <EntitySet Name="ProjectAccessSet" EntityType="emlakmvc.ProjectAccess" />
+          <EntitySet Name="ProjectSet" EntityType="emlakmvc.Project" />
+          <AssociationSet Name="UserProject" Association="emlakmvc.UserProject">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Project" EntitySet="ProjectSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserProjectAccess" Association="emlakmvc.UserProjectAccess">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="ProjectAccess" EntitySet="ProjectAccessSet" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectProjectAccess" Association="emlakmvc.ProjectProjectAccess">
+            <End Role="Project" EntitySet="ProjectSet" />
+            <End Role="ProjectAccess" EntitySet="ProjectAccessSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserCart" Association="emlakmvc.UserCart">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Cart" EntitySet="CartSet" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectCart" Association="emlakmvc.ProjectCart">
+            <End Role="Project" EntitySet="ProjectSet" />
+            <End Role="Cart" EntitySet="CartSet" />
+          </AssociationSet>
+          <AssociationSet Name="UserPayment" Association="emlakmvc.UserPayment">
+            <End Role="User" EntitySet="UserSet" />
+            <End Role="Payment" EntitySet="PaymentSet" />
+          </AssociationSet>
+          <AssociationSet Name="ProjectAccessPayment" Association="emlakmvc.ProjectAccessPayment">
+            <End Role="ProjectAccess" EntitySet="ProjectAccessSet" />
+            <End Role="Payment" EntitySet="PaymentSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Mail" Type="String" Nullable="false" />
+          <Property Name="Telefon" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <NavigationProperty Name="UserType" Relationship="emlakmvc.UserTypeUser" FromRole="User" ToRole="UserType" />
+          <NavigationProperty Name="Sikayet" Relationship="emlakmvc.UserSikayet" FromRole="User" ToRole="Sikayet" />
+          <NavigationProperty Name="Ilan" Relationship="emlakmvc.UserIlan" FromRole="User" ToRole="Ilan" />
+          <Property Name="Avatar" Type="Binary" Nullable="true" />
+          <NavigationProperty Name="Comment" Relationship="emlakmvc.UserComment" FromRole="User" ToRole="Comment" />
+          <NavigationProperty Name="Log" Relationship="emlakmvc.UserLog" FromRole="User" ToRole="Log" />
+          <NavigationProperty Name="Project" Relationship="emlakmvc.UserProject" FromRole="User" ToRole="Project" />
+          <NavigationProperty Name="ProjectAccess" Relationship="emlakmvc.UserProjectAccess" FromRole="User" ToRole="ProjectAccess" />
+          <NavigationProperty Name="Cart" Relationship="emlakmvc.UserCart" FromRole="User" ToRole="Cart" />
+          <NavigationProperty Name="Payment" Relationship="emlakmvc.UserPayment" FromRole="User" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="UserType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="emlakmvc.UserTypeUser" FromRole="UserType" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Ilan">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Fiyat" Type="String" Nullable="false" />
+          <Property Name="MetreKare" Type="Int32" Nullable="false" />
+          <Property Name="Tarih" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Kategori" Relationship="emlakmvc.KategoriIlan" FromRole="Ilan" ToRole="Kategori" />
+          <Property Name="Resim" Type="Binary" Nullable="true" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="KategoriId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="IlanDetay" Relationship="emlakmvc.IlanDetayIlan" FromRole="Ilan" ToRole="IlanDetay" />
+          <Property Name="IlanDetayId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="emlakmvc.UserIlan" FromRole="Ilan" ToRole="User" />
+          <NavigationProperty Name="Comment" Relationship="emlakmvc.IlanComment" FromRole="Ilan" ToRole="Comment" />
+        </EntityType>
+        <EntityType Name="IlanDetay">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kat" Type="String" Nullable="false" />
+          <Property Name="OdaSayi" Type="String" Nullable="false" />
+          <Property Name="BanyoSayi" Type="String" Nullable="false" />
+          <Property Name="Isitma" Type="String" Nullable="false" />
+          <Property Name="Esyalimi" Type="String" Nullable="false" />
+          <Property Name="Aciklama" Type="String" Nullable="false" />
+          <Property Name="Adres" Type="String" Nullable="false" />
+          <NavigationProperty Name="Ilan" Relationship="emlakmvc.IlanDetayIlan" FromRole="IlanDetay" ToRole="Ilan" />
+        </EntityType>
+        <EntityType Name="Log">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Subject" Type="String" Nullable="false" />
+          <Property Name="Detail" Type="String" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="emlakmvc.UserLog" FromRole="Log" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriAdi" Type="String" Nullable="false" />
+          <NavigationProperty Name="Ilan" Relationship="emlakmvc.KategoriIlan" FromRole="Kategori" ToRole="Ilan" />
+        </EntityType>
+        <EntityType Name="Sikayet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Subject" Type="String" Nullable="false" />
+          <Property Name="Aciklama" Type="String" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="emlakmvc.UserSikayet" FromRole="Sikayet" ToRole="User" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="IlanId" Type="Int32" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <Property Name="Verified" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="emlakmvc.UserComment" FromRole="Comment" ToRole="User" />
+          <NavigationProperty Name="Ilan" Relationship="emlakmvc.IlanComment" FromRole="Comment" ToRole="Ilan" />
+        </EntityType>
+        <Association Name="UserTypeUser">
+          <End Type="emlakmvc.UserType" Role="UserType" Multiplicity="1" />
+          <End Type="emlakmvc.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KategoriIlan">
+          <End Type="emlakmvc.Kategori" Role="Kategori" Multiplicity="1" />
+          <End Type="emlakmvc.Ilan" Role="Ilan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ilan">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserSikayet">
+          <End Type="emlakmvc.User" Role="User" Multiplicity="1" />
+          <End Type="emlakmvc.Sikayet" Role="Sikayet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Sikayet">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IlanDetayIlan">
+          <End Type="emlakmvc.IlanDetay" Role="IlanDetay" Multiplicity="1" />
+          <End Type="emlakmvc.Ilan" Role="Ilan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IlanDetay">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ilan">
+              <PropertyRef Name="IlanDetayId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserIlan">
+          <End Type="emlakmvc.User" Role="User" Multiplicity="1" />
+          <End Type="emlakmvc.Ilan" Role="Ilan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ilan">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserComment">
+          <End Type="emlakmvc.User" Role="User" Multiplicity="1" />
+          <End Type="emlakmvc.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IlanComment">
+          <End Type="emlakmvc.Ilan" Role="Ilan" Multiplicity="1" />
+          <End Type="emlakmvc.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ilan">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="IlanId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserLog">
+          <End Type="emlakmvc.User" Role="User" Multiplicity="1" />
+          <End Type="emlakmvc.Log" Role="Log" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Log">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="emlakmvc.CartStatus" Nullable="false" />
+          <Property Name="Count" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="emlakmvc.UserCart" FromRole="Cart" ToRole="User" />
+          <NavigationProperty Name="Project" Relationship="emlakmvc.ProjectCart" FromRole="Cart" ToRole="Project" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Payment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Date" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="emlakmvc.UserPayment" FromRole="Payment" ToRole="User" />
+          <NavigationProperty Name="ProjectAccess" Relationship="emlakmvc.ProjectAccessPayment" FromRole="Payment" ToRole="ProjectAccess" />
+        </EntityType>
+        <EntityType Name="ProjectAccess">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="User" Relationship="emlakmvc.UserProjectAccess" FromRole="ProjectAccess" ToRole="User" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="emlakmvc.ProjectProjectAccess" FromRole="ProjectAccess" ToRole="Project" />
+          <NavigationProperty Name="Payment" Relationship="emlakmvc.ProjectAccessPayment" FromRole="ProjectAccess" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" />
+          <Property Name="Text" Type="String" Nullable="false" />
+          <Property Name="File" Type="Binary" Nullable="true" />
+          <Property Name="FileName" Type="String" Nullable="false" />
+          <Property Name="ContentType" Type="String" Nullable="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <NavigationProperty Name="User" Relationship="emlakmvc.UserProject" FromRole="Project" ToRole="User" />
+          <NavigationProperty Name="ProjectAccess" Relationship="emlakmvc.ProjectProjectAccess" FromRole="Project" ToRole="ProjectAccess" />
+          <NavigationProperty Name="Cart" Relationship="emlakmvc.ProjectCart" FromRole="Project" ToRole="Cart" />
+        </EntityType>
+        <Association Name="UserProject">
+          <End Type="emlakmvc.User" Role="User" Multiplicity="1" />
+          <End Type="emlakmvc.Project" Role="Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserProjectAccess">
+          <End Type="emlakmvc.User" Role="User" Multiplicity="1" />
+          <End Type="emlakmvc.ProjectAccess" Role="ProjectAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectAccess">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProjectProjectAccess">
+          <End Type="emlakmvc.Project" Role="Project" Multiplicity="1" />
+          <End Type="emlakmvc.ProjectAccess" Role="ProjectAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProjectAccess">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserCart">
+          <End Type="emlakmvc.User" Role="User" Multiplicity="1" />
+          <End Type="emlakmvc.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProjectCart">
+          <End Type="emlakmvc.Project" Role="Project" Multiplicity="1" />
+          <End Type="emlakmvc.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UserPayment">
+          <End Type="emlakmvc.User" Role="User" Multiplicity="1" />
+          <End Type="emlakmvc.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EnumType Name="CartStatus">
+          <Member Name="New" Value="0" />
+          <Member Name="Paid" Value="1" />
+          <Member Name="Canceled" Value="2" />
+        </EnumType>
+        <Association Name="ProjectAccessPayment">
+          <End Type="emlakmvc.ProjectAccess" Role="ProjectAccess" Multiplicity="1" />
+          <End Type="emlakmvc.Payment" Role="Payment" Multiplicity="0..1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="emlakmvcStoreContainer" CdmEntityContainer="emlakmvcContainer">
+    <EntitySetMapping Name="UserSet">
+      <EntityTypeMapping TypeName="IsTypeOf(emlakmvc.User)">
+        <MappingFragment StoreEntitySet="UserSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(emlakmvc.UserType)">
+        <MappingFragment StoreEntitySet="UserTypeSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IlanSet">
+      <EntityTypeMapping TypeName="IsTypeOf(emlakmvc.Ilan)">
+        <MappingFragment StoreEntitySet="IlanSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Fiyat" ColumnName="Fiyat" />
+          <ScalarProperty Name="MetreKare" ColumnName="MetreKare" />
+          <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+          <ScalarProperty Name="Resim" ColumnName="Resim" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+          <ScalarProperty Name="IlanDetayId" ColumnName="IlanDetayId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IlanDetaySet">
+      <EntityTypeMapping TypeName="IsTypeOf(emlakmvc.IlanDetay)">
+        <MappingFragment StoreEntitySet="IlanDetaySet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Kat" ColumnName="Kat" />
+          <ScalarProperty Name="OdaSayi" ColumnName="OdaSayi" />
+          <ScalarProperty Name="BanyoSayi" ColumnName="BanyoSayi" />
+          <ScalarProperty Name="Isitma" ColumnName="Isitma" />
+          <ScalarProperty Name="Esyalimi" ColumnName="Esyalimi" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="Adres" ColumnName="Adres" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogSet">
+      <EntityTypeMapping TypeName="IsTypeOf(emlakmvc.Log)">
+        <MappingFragment StoreEntitySet="LogSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KategoriSet">
+      <EntityTypeMapping TypeName="IsTypeOf(emlakmvc.Kategori)">
+        <MappingFragment StoreEntitySet="KategoriSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="KategoriAdi" ColumnName="KategoriAdi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SikayetSet">
+      <EntityTypeMapping TypeName="IsTypeOf(emlakmvc.Sikayet)">
+        <MappingFragment StoreEntitySet="SikayetSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CommentSet">
+      <EntityTypeMapping TypeName="IsTypeOf(emlakmvc.Comment)">
+        <MappingFragment StoreEntitySet="CommentSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="IlanId" ColumnName="IlanId" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Verified" ColumnName="Verified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CartSet">
+      <EntityTypeMapping TypeName="IsTypeOf(emlakmvc.Cart)">
+        <MappingFragment StoreEntitySet="CartSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentSet">
+      <EntityTypeMapping TypeName="IsTypeOf(emlakmvc.Payment)">
+        <MappingFragment StoreEntitySet="PaymentSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Amount" ColumnName="Amount" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectAccessSet">
+      <EntityTypeMapping TypeName="IsTypeOf(emlakmvc.ProjectAccess)">
+        <MappingFragment StoreEntitySet="ProjectAccessSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectSet">
+      <EntityTypeMapping TypeName="IsTypeOf(emlakmvc.Project)">
+        <MappingFragment StoreEntitySet="ProjectSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="File" ColumnName="File" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="ContentType" ColumnName="ContentType" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ProjectAccessPayment" TypeName="emlakmvc.ProjectAccessPayment" StoreEntitySet="PaymentSet">
+      <EndProperty Name="ProjectAccess">
+        <ScalarProperty Name="Id" ColumnName="ProjectAccess_Id" />
+      </EndProperty>
+      <EndProperty Name="Payment">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
